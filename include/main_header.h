@@ -8,9 +8,10 @@
 #include <stdbool.h>
 
 #include <my_string.h>
-#include <my_error_handler.h>
 #include <non_standard_header.h>
-#include <shunting_yard.h>
+#include <my_error_handler.h>
 #include <my_parser.h>
+#include <my_rpn.h>
+#include <shunting_yard.h>
 
 #endif
