@@ -1,5 +1,5 @@
 TARGET_EXEC := my_bc
-cc := GCC
+cc := clang
 BUILD_DIR := ./build
 SRC_DIRS := ./src
 CFLAGS = -g3 -fsanitize=address -Wall -Wextra -Werror
