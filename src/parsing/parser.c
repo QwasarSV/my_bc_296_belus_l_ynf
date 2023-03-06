@@ -27,6 +27,7 @@ char** dirty_split(char* str, char ch)
     }
     tokens[index] = start;
     index += 1;
+    // printf("index is %i\n", index);
     tokens[index] = NULL;
     return tokens;
 }

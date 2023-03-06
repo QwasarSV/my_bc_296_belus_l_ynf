@@ -1,5 +1,29 @@
 #include <main_header.h>
 
+
+int print_result01(char** result, int size)
+{    
+    printf("printing array :\n");
+    int index = 0; 
+    while (index < size)
+    {
+        printf("%s ",result[index]);
+        index += 1;
+    }
+    printf("|\n");
+}
+
+int print_result02(char** result)
+{
+    int index = 0; 
+    while (result[index] != NULL)
+    {
+        printf("%s",result[index]);
+        index += 1;
+    }
+    printf("\n");
+}
+
 int get_array_size(char** tokens)
 {
     int size = 0;
@@ -11,39 +35,46 @@ int get_array_size(char** tokens)
 }
 
 
+
 char** shunting_yard_algo(char ** tokens)
 {   
     char** result = NULL;
     int size = get_array_size(tokens);
     result = malloc(sizeof(char*)*size + 1);
     result[size + 1] = NULL;
-
+    int pos = 0;
     int index = 0;
     while(tokens[index] != NULL)
     {
-        if (my_is_digit(tokens[index][0]))
+        if (tokens[index] != NULL && 
+            my_is_digit(tokens[index][0])) // step 1
         {
-            printf("Placeholder_00\n");
-            // result[index] = my_strdup(tokens[0]);
-            // index += 1;
+            result[pos++] = my_strdup(tokens[index]);
         }
-        else if (my_strcmp(tokens[index], O_PARENTHESIS))
+        else if (my_strcmp(tokens[index], O_PARENTHESIS) == 0) //step 2
         {
-            printf("Placeholder_01\n");
+            push(tokens[index]);
         }
-        else if (my_strcmp(tokens[index], C_PARENTHESIS))
+        else if ( my_strcmp(tokens[index], C_PARENTHESIS) == 0) // step 3
         {
-            printf("Placeholder_02\n");
+            clear_stack(result, &pos);
         }
-        else if (is_operator(tokens[index]))
+        else if (is_operator(tokens[index])) //step 4 5 6
         {
+
             while (precedence_check(tokens[index]))
             {
-                printf("Placeholder_03\n");
+                result[pos++] = my_strdup(pop());
             }
+            push(tokens[index]);
         }
         index += 1;
     }
-    free(result);
-    // return result; 
+    int jndex = 0;
+    while(stack[top] != NULL)
+    {
+        result[pos++] = my_strdup(pop()); // step 7
+    }
+    print_result01(result, pos);
+    return result; 
 }

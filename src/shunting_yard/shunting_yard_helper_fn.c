@@ -76,13 +76,12 @@ bool precedence_check(char* token)
     return false;
 }
 // not index == big bad need to find last element or use global var
-void clear_stack(char** stack, char** result)
+void clear_stack(char** result, int *pos)
 {
-    int index = 0;
-    while (my_strcmp(stack[top], O_PARENTHESIS) != 0)
+    while (my_strcmp(stack[top], O_PARENTHESIS)) //my_strcmp(stack[top - 1], O_PARENTHESIS) != 0
     {
-        result[index] = my_strdup(pop(stack));
-        index += 1;
+        result[*pos] = strdup(pop());
+        (*pos)++;
     }
-    pop(stack);
+    pop();
 }

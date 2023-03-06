@@ -14,6 +14,6 @@
 #include <my_parser.h>
 #include <my_rpn.h>
 #include <shunting_yard.h>
-
+#include <string.h>
 
 #endif

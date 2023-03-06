@@ -22,8 +22,14 @@ char**  shunting_yard_algo(char ** tokens);
 int     establish_precedence(char* tokens);
 char*   establish_associativity(char* tokens);
 bool    my_is_digit(char ch);
-int     last_element(char** arr);
+int     is_empty(char** arr);
 bool    associativity_check(char* token);
 bool    precedence_check(char* token);
+void    clear_stack(char** result, int *pos);
+
+
+int print_result02(char** result);
+int print_result01(char** result, int size);
+int print_stack();
 
 #endif

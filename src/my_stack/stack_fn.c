@@ -10,7 +10,7 @@ int push(char* token)
         write(STDERR_FILENO, OVERFLOW, my_strlen(OVERFLOW));
         return EXIT_FAILURE;
     }
-    stack[++top] = my_strdup(token);
+    stack[++top] = strdup(token);
     return EXIT_SUCCESS;
 }
 
@@ -22,4 +22,16 @@ char* pop()
         return NULL;
     }
     return stack[top--];
+}
+
+int print_stack()
+{   
+    printf("printing stack top is %i:", top);
+    int index = 0; 
+    while (index <= top)
+    {
+        printf("|%s|",stack[index]);
+        index += 1;
+    }
+    printf("\n");
 }
