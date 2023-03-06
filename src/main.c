@@ -8,8 +8,9 @@ int main(int argc, char** argv)
     //     return EXIT_FAILURE;
     // }
     // char test[] = "( 23 + 3 ) * 4";
-    char test[] = "3 * ( 1 + 2 * 2 ) + 5";
+    char test[] = "1 + 1";
     char** tokens = NULL;
+    char** result = NULL;
     tokens = dirty_split(test, ' ');
     print_result02(tokens);
     // printf("First split token   : %s\n", tokens[0]);
@@ -31,7 +32,11 @@ int main(int argc, char** argv)
     // printf("stack pop           : %s\n", pop());
     // printf("stack pop           : %s\n", pop());
     
-    shunting_yard_algo(tokens);
+    result = shunting_yard_algo(tokens);
+    printf("rpn result is  :|%i| \n",my_calculate(result, 2));
+
+    perform_op(result, 3);
+    free(result);
     free(tokens);
     return 0;
 }

@@ -1,5 +1,33 @@
 #include <main_header.h>
 //need to be of char* type and make use of strcmp for later evolution (if operator > 1 ch)
+
+
+int my_add(int left, int right)
+{
+    return left + right;
+}
+
+int my_substract(int left, int right)
+{
+    return left - right;
+}
+
+int my_mult(int left, int right)
+{
+    return left * right;
+}
+
+int my_divide(int left, int right)
+{
+    return left / right;
+}
+
+int my_modulo(int left, int right)
+{
+    return left % right;
+}
+
+
 bool is_operator(char* token)
 {
     if (token == NULL)
