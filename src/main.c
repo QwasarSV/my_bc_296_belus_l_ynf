@@ -1,5 +1,4 @@
 #include <main_header.h>
-#define __MY_STACK_VAR__
 
 int main(int argc, char** argv)
 {
@@ -33,9 +32,9 @@ int main(int argc, char** argv)
     // printf("stack pop           : %s\n", pop());
     
     result = shunting_yard_algo(tokens);
-    printf("rpn result is  :|%i| \n",my_calculate(result, 2));
-
-    perform_op(result, 5);
+    // printf("rpn result is  :|%i| \n",my_calculate(result, 2));
+    // printf("pos is top %i\n", top);
+    perform_op(result, top);
     free(result);
     free(tokens);
     return 0;

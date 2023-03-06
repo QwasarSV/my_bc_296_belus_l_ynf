@@ -1,8 +1,7 @@
 #include <main_header.h>
 
-
 int print_result01(char** result, int size)
-{    
+{
     printf("printing array :\n");
     int index = 0; 
     while (index < size)
@@ -33,8 +32,6 @@ int get_array_size(char** tokens)
     }
     return size;
 }
-
-
 
 char** shunting_yard_algo(char ** tokens)
 {   
@@ -71,11 +68,13 @@ char** shunting_yard_algo(char ** tokens)
         index += 1;
     }
     int jndex = 0;
-    while(stack[top] != NULL)
+    while(stack[top] != NULL)  // step 7
     {
-        result[pos++] = my_strdup(pop()); // step 7
+        result[pos++] = my_strdup(pop());
     }
     result[pos] = NULL;
     print_result01(result, pos);
+    top = pos;
+    
     return result; 
 }

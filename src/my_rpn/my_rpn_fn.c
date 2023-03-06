@@ -1,11 +1,10 @@
 #include <main_header.h>
-s   
+
 int my_calculate(char** tokens, int pos)
 {
     int right = to_int(tokens[pos - 1]);
     int left  = to_int(tokens[pos - 2]);
     int (*fn_ptr)(int, int);
-
     switch (tokens[pos][0])
     {
     case '+':
@@ -29,10 +28,10 @@ int my_calculate(char** tokens, int pos)
 
 void perform_op(char** tokens, int size)
 {
-    int index = 0; 
-    int prev_prev = 0;
-    int prev = 0;
-    int result = 0;
+    int index       = 0;
+    int prev_prev   = 0;
+    int prev        = 0;
+    int result      = 0;
     while (index < size)
     {
         printf("working on token :%s\n", tokens[index]);
@@ -60,4 +59,12 @@ void perform_op(char** tokens, int size)
     }
     printf("the int result is %i\n", result);
     printf("the char* result is %s\n", tokens[0]);
+    free_result(tokens);
+    // free(tokens[0]);
+    // free(tokens[1]);
+    // free(tokens[2]);
+    // free(tokens[3]);
+    // free(tokens[4]);
+    // free(tokens[5]);
+
 }

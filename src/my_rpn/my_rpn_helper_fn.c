@@ -1,7 +1,6 @@
 #include <main_header.h>
 //need to be of char* type and make use of strcmp for later evolution (if operator > 1 ch)
 
-
 int my_add(int left, int right)
 {
     return left + right;
@@ -26,7 +25,6 @@ int my_modulo(int left, int right)
 {
     return left % right;
 }
-
 
 bool is_operator(char* token)
 {
@@ -62,7 +60,6 @@ int count_digits(int val)
     return len;
 }
 
-
 int to_int(char* token)
 {
     int len = my_strlen(token);
@@ -83,8 +80,19 @@ void delete_tokens(char **tokens, int *size, int pos)
     int index = pos;
     while (index < *size - 1)
     {
+        free(tokens[index]);
         tokens[index] = my_strdup(tokens[index + 1]);
         index +=1;
     }
     (*size)--;
+}
+
+int free_result(char**tokens)
+{
+    int index = 0;
+    while (index < top)
+    {
+        free(tokens[index]);
+        index += 1;
+    }
 }
