@@ -5,6 +5,6 @@
 
 int     my_ctoi(char *string, size_t n);
 void    my_revswap(char *ptr, char*ptr1, char tmp_char);
-char*   itoa(int value, char* result, int base);
+char*   my_itoa(int value, char* result, int base);
 
 #endif
