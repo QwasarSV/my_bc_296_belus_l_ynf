@@ -1,12 +1,13 @@
 #include <main_header.h>
 
-token_t preced_assoc_l[] = {
+token_t preced_assoc_l[] = 
+{
     {"+",   1, "left"},
     {"-",   1, "left"},
     {"*",   2, "left"},
     {"/",   2, "left"},
     {"^",   3, "right"},
-    {"%",  3, "left"},
+    {"%",   3, "left"},
     {NULL,  0, NULL}
 };
 
@@ -52,46 +53,36 @@ int is_empty(char** arr)
     return arr[0] == NULL;
 }
 
-int last_element(char** arr)
+bool associativity_check(char* token)
 {
-    int len = 0;
-    while (arr[len] != NULL)
-    {
-        len += 1;
-    }
-    return len;
-}
-
-bool associativity_check(char* token, char** stack)
-{
-    int last = last_element(stack);
-    if (establish_precedence(token) == establish_precedence(stack[last]) &&
-        my_strcmp(establish_associativity(token), "left") == 0)
+    if (establish_precedence(token) == establish_precedence(stack[top]) &&
+        my_strcmp(establish_associativity(token), LEFT) == 0)
     {
         return true;
     }
     return false;
 }
 
-bool precedence_check(char* token, char** stack)
+bool precedence_check(char* token)
 {
-    int last = top;
-    if (!(is_empty(stack)) && is_operator(stack[last]))
+    if (!(is_empty(stack)) && is_operator(stack[top]))
     {
-        if (establish_precedence(token) < establish_precedence(stack[last]) ||
-        associativity_check(token, stack))
+        if (establish_precedence(token) < establish_precedence(stack[top]) ||
+        associativity_check(token))
         {
             return true;
         }
     }
     return false;
 }
-
+// not index == big bad need to find last element or use global var
 void clear_stack(char** stack, char** result)
 {
-    int last = last_element(stack);
-    while (my_strcmp(stack[last], O_PARENTHESIS))
+    int index = 0;
+    while (my_strcmp(stack[top], O_PARENTHESIS) != 0)
     {
-
+        result[index] = my_strdup(pop(stack));
+        index += 1;
     }
+    pop(stack);
 }
