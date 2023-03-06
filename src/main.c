@@ -8,7 +8,7 @@ int main(int argc, char** argv)
     //     return EXIT_FAILURE;
     // }
     // char test[] = "( 23 + 3 ) * 4";
-    char test[] = "1 + 1";
+    char test[] = "( 3 + 2 ) * 4";
     char** tokens = NULL;
     char** result = NULL;
     tokens = dirty_split(test, ' ');
@@ -35,7 +35,7 @@ int main(int argc, char** argv)
     result = shunting_yard_algo(tokens);
     printf("rpn result is  :|%i| \n",my_calculate(result, 2));
 
-    perform_op(result, 3);
+    perform_op(result, 5);
     free(result);
     free(tokens);
     return 0;

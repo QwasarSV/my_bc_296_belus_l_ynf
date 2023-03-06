@@ -1,28 +1,5 @@
 #include <main_header.h>
-
-int to_int(char* token)
-{
-    int len = my_strlen(token);
-    return my_ctoi(token, len);
-}
-
-// int to_str(int val)
-// {
-//     char* buff = ;
-//     return my_atoi(val, token, 10);
-// }
-
-void delete_tokens(char **tokens, int *size, int pos)
-{
-    int index = pos;
-    while (index < *size - 1)
-    {
-        tokens[index] = my_strdup(tokens[index + 1]);
-        index +=1;
-    }
-    (*size)--;
-}
-
+s   
 int my_calculate(char** tokens, int pos)
 {
     int right = to_int(tokens[pos - 1]);
@@ -55,12 +32,15 @@ void perform_op(char** tokens, int size)
     int index = 0; 
     int prev_prev = 0;
     int prev = 0;
+    int result = 0;
     while (index < size)
     {
         printf("working on token :%s\n", tokens[index]);
         if (is_operator(tokens[index]))
         {
             printf("copying result\n");
+            result = my_calculate(tokens, index);
+            tokens[index] = to_str(result, tokens[index]); 
             index = 0;
         }
         else
@@ -70,14 +50,14 @@ void perform_op(char** tokens, int size)
             prev = index;
             index += 1;
         }
-        if ( index == 0)
+        if (index == 0)
         {
             printf("Deleting previous tokens\n");
             delete_tokens(tokens, &size, prev);
             delete_tokens(tokens, &size, prev_prev);
         }
         print_result01(tokens, size);
-        
     }
-
+    printf("the int result is %i\n", result);
+    printf("the char* result is %s\n", tokens[0]);
 }

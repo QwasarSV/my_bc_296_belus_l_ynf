@@ -46,3 +46,45 @@ bool is_operator(char* token)
     }
     return false;
 }
+
+int count_digits(int val)
+{
+    if(val == 0)
+    {
+        return 1;
+    }
+    int len = 0;
+    while (val != 0)
+    {
+        len += 1;
+        val /= 10;
+    }
+    return len;
+}
+
+
+int to_int(char* token)
+{
+    int len = my_strlen(token);
+    return my_ctoi(token, len);
+}
+
+char* to_str(int val, char* buff)
+{
+    free(buff);
+    int size = count_digits(val);
+    buff = malloc(sizeof(char) * val);
+    my_itoa(val, buff, 10);
+    return buff;
+}
+
+void delete_tokens(char **tokens, int *size, int pos)
+{
+    int index = pos;
+    while (index < *size - 1)
+    {
+        tokens[index] = my_strdup(tokens[index + 1]);
+        index +=1;
+    }
+    (*size)--;
+}
