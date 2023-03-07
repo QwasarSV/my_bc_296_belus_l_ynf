@@ -7,7 +7,7 @@ int push(char* token)
 {
     if (top > MAX_INPUT_TOKENS) 
     {
-        write(STDERR_FILENO, OVERFLOW, my_strlen(OVERFLOW));
+        write(STDERR_FILENO, OVERFLOW, SIZE_OVERF);
         return EXIT_FAILURE;
     }
     free(stack[top + 1]);
@@ -19,7 +19,7 @@ char* pop()
 {
     if (top > MAX_INPUT_TOKENS) 
     {
-        write(STDERR_FILENO, UNDERFLOW, my_strlen(UNDERFLOW));
+        write(STDERR_FILENO, UNDERFLOW, SIZE_UNDERFLOW);
         return NULL;
     }
     return stack[top--];
