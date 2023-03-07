@@ -106,10 +106,12 @@ char* check_user_arg(char* str)
     }
     if (!divide_error(str))
     {
+        free(str);
         return NULL;
     }
     if (!no_sqr(str))
     {
+        free(str);
         return NULL;
     }
     return str;

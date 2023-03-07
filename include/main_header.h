@@ -16,4 +16,7 @@
 #include <shunting_yard.h>
 #include <string.h>
 
+void free_bc(char** tokens, char** result, char* ptr);
+int my_bc(char** tokens,char** result, char* ptr);
+
 #endif
