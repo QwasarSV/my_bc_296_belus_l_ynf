@@ -32,9 +32,9 @@ bool is_operator(char* token)
     {
         return false;
     } 
-    char operator_token[][2] = {"+", "-", "*", "/", "^", "%", "\0"};
+    char operator_token[][2] = {"+", "-", "*", "/", "%", "^", "\0"};
     int index = 0;
-    while (index < 5)
+    while (index < 6)
     {
         if (my_strcmp(operator_token[index], token) == 0) 
         {
@@ -57,21 +57,42 @@ int count_digits(int val)
         len += 1;
         val /= 10;
     }
-    return len;
+    return (len);
+}
+
+int my_abs(int val)
+{
+    if (val < 0)
+    {
+        val *= -1;
+    }
+    return val;
 }
 
 int to_int(char* token)
 {
     int len = my_strlen(token);
-    return my_ctoi(token, len);
+    int result = my_ctoi(token, len);
+    printf("%i",result); 
+    return result;
 }
 
 char* to_str(int val, char* buff)
 {
+    int size = 0;
     free(buff);
-    int size = count_digits(val);
-    buff = malloc(sizeof(char) * val);
+    
+    if ( val < 0)
+    {
+        size = count_digits(val) + 2;
+    }
+    else
+    {
+        size = count_digits(val) + 1;
+    }
+    buff = malloc(sizeof(char) * size);
     my_itoa(val, buff, 10);
+    printf("%s\n", buff);
     return buff;
 }
 

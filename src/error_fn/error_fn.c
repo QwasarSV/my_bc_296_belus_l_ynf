@@ -52,7 +52,11 @@ char* space_out_str(char* str)
     while (index < len)
     {
         new[jndex++] = str[index];
-        new[jndex++] = ' ';
+        if (!my_is_digit(str[index]) || !my_is_digit(str[index + 1]) )
+        {
+            new[jndex++] = ' ';
+
+        }
         index += 1;
     }
     new[jndex - 1] = '\0';

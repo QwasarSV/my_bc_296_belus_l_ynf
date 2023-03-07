@@ -41,7 +41,8 @@ int perform_op(char** tokens, int size)
                 return EXIT_FAILURE;
             }
             result = my_calculate(tokens, index);
-            tokens[index] = to_str(result, tokens[index]); 
+            tokens[index] = to_str(result, tokens[index]);
+            print_result01(tokens, size);
             index = 0;
         }
         else
@@ -56,6 +57,7 @@ int perform_op(char** tokens, int size)
             delete_tokens(tokens, &size, prev_prev);
         }
     }
+
     printf("%s\n", tokens[0]);
     free_result(tokens);
     return EXIT_SUCCESS;

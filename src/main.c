@@ -6,22 +6,26 @@ int main(int argc, char** argv)
     {
         return EXIT_FAILURE;
     }
-    
+
     char* test_ptr = NULL;
     char** tokens = NULL;
     char** result = NULL;
+
     test_ptr = check_user_arg(argv[1]);
-    
+
     if (test_ptr == NULL)
     {
         return EXIT_FAILURE;
     }
-    
+    // printf("%s\n", test_ptr);
     tokens = dirty_split(test_ptr, ' ');
+    
     result = shunting_yard_algo(tokens);
+
     perform_op(result, top);
     free(result);
     free(tokens);
+    // free(test_ptr);
     return EXIT_SUCCESS;
 }
     // printf("|%s|\n", test_ptr);
