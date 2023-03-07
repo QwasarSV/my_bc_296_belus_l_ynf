@@ -3,6 +3,7 @@
 
 #define ARG_SIZE            2
 #define ERROR               -1
+#define NO_SQR              "( )"
 #define DIVZERO             "/ 0"
 #define DIVZERO_ERR         "divide by zero\n"
 #define SIZE_DIVZERO        15
@@ -20,6 +21,7 @@ int     welcome_error(int val);
 bool    is_spaced_out(char* str);
 bool    divide_error(char* str);
 bool    raise_format_error(int nb_arg);
+bool    no_sqr(char* str);
 char*   space_out_str(char* str);
 char*   check_user_arg(char* str);
 

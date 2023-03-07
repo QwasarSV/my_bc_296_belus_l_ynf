@@ -73,15 +73,12 @@ int to_int(char* token)
 {
     int len = my_strlen(token);
     int result = my_ctoi(token, len);
-    printf("%i",result); 
     return result;
 }
 
-char* to_str(int val, char* buff)
+int digit_size(int val)
 {
-    int size = 0;
-    free(buff);
-    
+    int size = 0; 
     if ( val < 0)
     {
         size = count_digits(val) + 2;
@@ -90,9 +87,16 @@ char* to_str(int val, char* buff)
     {
         size = count_digits(val) + 1;
     }
+    return size;
+}
+
+char* to_str(int val, char* buff)
+{
+    int size = 0;
+    free(buff);
+    size = digit_size(val);
     buff = malloc(sizeof(char) * size);
     my_itoa(val, buff, 10);
-    printf("%s\n", buff);
     return buff;
 }
 

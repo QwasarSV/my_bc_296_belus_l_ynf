@@ -18,6 +18,7 @@ int     my_abs(int val);
 char*   to_str(int val, char* buff);
 void    delete_tokens(char **tokens, int *size, int pos);
 int     count_digits(int val);
+int     digit_size(int val);
 int     free_result(char**tokens);
 
 #endif

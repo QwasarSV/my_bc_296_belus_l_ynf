@@ -42,7 +42,6 @@ int perform_op(char** tokens, int size)
             }
             result = my_calculate(tokens, index);
             tokens[index] = to_str(result, tokens[index]);
-            print_result01(tokens, size);
             index = 0;
         }
         else
