@@ -73,8 +73,6 @@ char** shunting_yard_algo(char ** tokens)
         result[pos++] = my_strdup(pop());
     }
     result[pos] = NULL;
-    print_result01(result, pos);
     top = pos;
-    
     return result; 
 }

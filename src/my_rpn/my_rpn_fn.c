@@ -26,7 +26,7 @@ int my_calculate(char** tokens, int pos)
     return fn_ptr(left, right);
 }
 
-void perform_op(char** tokens, int size)
+int perform_op(char** tokens, int size)
 {
     int index       = 0;
     int prev_prev   = 0;
@@ -34,37 +34,29 @@ void perform_op(char** tokens, int size)
     int result      = 0;
     while (index < size)
     {
-        printf("working on token :%s\n", tokens[index]);
         if (is_operator(tokens[index]))
         {
-            printf("copying result\n");
+            if (raise_format_error(index))
+            {
+                return EXIT_FAILURE;
+            }
             result = my_calculate(tokens, index);
             tokens[index] = to_str(result, tokens[index]); 
             index = 0;
         }
         else
         {
-            printf("copying previous token position\n");
             prev_prev = prev;
             prev = index;
             index += 1;
         }
         if (index == 0)
         {
-            printf("Deleting previous tokens\n");
             delete_tokens(tokens, &size, prev);
             delete_tokens(tokens, &size, prev_prev);
         }
-        print_result01(tokens, size);
     }
-    printf("the int result is %i\n", result);
-    printf("the char* result is %s\n", tokens[0]);
+    printf("%s\n", tokens[0]);
     free_result(tokens);
-    // free(tokens[0]);
-    // free(tokens[1]);
-    // free(tokens[2]);
-    // free(tokens[3]);
-    // free(tokens[4]);
-    // free(tokens[5]);
-
+    return EXIT_SUCCESS;
 }

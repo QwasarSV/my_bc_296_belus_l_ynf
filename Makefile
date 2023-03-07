@@ -2,7 +2,7 @@ TARGET_EXEC := my_bc
 cc := clang
 BUILD_DIR := ./build
 SRC_DIRS := ./src
-CFLAGS = -g3 -fsanitize=address -Wall -Wextra -Werror
+CFLAGS = -fsanitize=address -Wall -Wextra -Werror
 LDFLAGS = $(CFLAGS)
 
 export C_INCLUDE_PATH=include/
@@ -24,11 +24,11 @@ DEPS := $(OBJS:.o=.d)
 # Every folder in ./src will need to be passed to GCC so that it can find header files
 INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 # Add a prefix to INC_DIRS. So moduleA would become -ImoduleA. GCC understands this -I flag
-INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+INC_FLAGS := $(addprefix -IC,$(INC_DIRS))
 
 # The -MMD and -MP flags together generate Makefiles for us!
 # These files will have .d instead of .o as the output.
-XTRAFLAGS := $(INC_FLAGS) -MMD -MP
+XTRAFLAGS := $(INC_FLAGS) -g -MMD -MP
 
 # The final build step.
 
@@ -51,7 +51,7 @@ fclean:
 	rm $(TARGET_EXEC)
 
 debug: $(OBJS)
-	$(CC) $(OBJS) -o $@ $(LDFLAGS)
+	$(CC) -g $(OBJS) -o $@ $(LDFLAGS)
 
 debugc:	
 	rm -r $(BUILD_DIR)
