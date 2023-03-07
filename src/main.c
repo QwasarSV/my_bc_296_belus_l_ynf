@@ -19,7 +19,11 @@ int main(int argc, char** argv)
     }
     tokens = dirty_split(test_ptr, ' ');
     result = shunting_yard_algo(tokens);
-    perform_op(result, top);
+    int success_code = perform_op(result, top);
+    if (success_code)
+    {
+        return EXIT_FAILURE;
+    }
     free(result);
     free(tokens);
     free(test_ptr);
