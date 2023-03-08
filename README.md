@@ -18,6 +18,7 @@ Parsing the result using a shunting yard algorithm and change infix notation int
 then using simple and easy algorithm to perform the operation following the RPN notation.
 
 SHUNTING YARD STEPS :
+
 STEP 1 : If the incoming symbols is an operand, print it..
 
 STEP 2 : If the incoming symbol is a left parenthesis, push it on the stack.
