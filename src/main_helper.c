@@ -13,11 +13,6 @@ int my_bc(char** tokens, char** result, char* ptr)
     tokens = dirty_split(ptr, ' ');
     result = shunting_yard_algo(tokens);
     success_code = perform_op(result, top);
-    if (success_code)
-    {
-        free_bc(tokens, result, ptr);
-        return EXIT_FAILURE;
-    }
-        free_bc(tokens, result, ptr);
+    free_bc(tokens, result, ptr);
     return success_code;
 }
