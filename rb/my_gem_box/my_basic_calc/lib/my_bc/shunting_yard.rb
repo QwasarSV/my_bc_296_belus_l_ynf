@@ -4,7 +4,7 @@ require "my_bc/helper_fn"
 
 class My_bc::Shunting_yard
     include Helper_fn
-    
+
     def initialize(infix_notation)
         @infix_notation = infix_notation
     end

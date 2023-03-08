@@ -36,6 +36,11 @@ int perform_op(char** tokens, int size)
     {
         if (is_operator(tokens[index]))
         {
+            if (rpn_divide_error(tokens, index))
+            {
+                free_result(tokens);
+                return EXIT_FAILURE;
+            }
             if (raise_format_error(index))
             {
                 free_result(tokens);

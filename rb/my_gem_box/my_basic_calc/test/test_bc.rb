@@ -12,7 +12,7 @@ class My_bc_Test < Minitest::Test
   #   assert_equal "25.0",
   #   my_rpn_fn(rpn_notation)
   # end
-
+# ["3", "1", "2", "2", "*", "+", "*", "5", "+"]
   def test_06 # test for step 6
     puts "begin test 6 "  
     rpn_notation = my_bc_fn( ["3","*","(","1","+","2","*","2",")","+","5"] )
@@ -40,7 +40,9 @@ class My_bc_Test < Minitest::Test
   end
 
   def test_extra_04
+    p "begin test 04 "  
     rpn_notation = my_bc_fn(["2", "+", "3", "*", "4"])
+    p "this rpn : #{rpn_notation}"
     assert_equal "14.0",
     my_rpn_fn(rpn_notation)
   end

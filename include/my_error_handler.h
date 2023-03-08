@@ -24,5 +24,6 @@ bool    raise_format_error(int nb_arg);
 bool    no_sqr(char* str);
 char*   space_out_str(char* str);
 char*   check_user_arg(char* str);
+bool    rpn_divide_error(char** tokens, int index);
 
 #endif

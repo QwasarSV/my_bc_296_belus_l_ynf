@@ -50,6 +50,18 @@ bool divide_error(char* str)
     return false;
 }
 
+bool rpn_divide_error(char** tokens, int index)
+{
+    if (my_strcmp(tokens[index], "/") == 0 &&
+                    my_strcmp(tokens[index - 1], "0") == 0)
+    {
+        write(STDERR_FILENO, DIVZERO_ERR, SIZE_DIVZERO);
+        return true;
+    }
+    return false;
+}
+
+
 bool no_sqr(char* str)
 {
     if (my_strstr(str, NO_SQR) == NULL)
