@@ -8,5 +8,6 @@ extern int top;
 
 int     push(char* token);
 char*   pop();
+void    print_stack();
 
 #endif

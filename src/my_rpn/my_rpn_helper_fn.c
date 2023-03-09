@@ -112,7 +112,7 @@ void delete_tokens(char **tokens, int *size, int pos)
     (*size)--;
 }
 
-int free_result(char**tokens)
+void free_result(char**tokens)
 {
     int index = 0;
     while (index < top)

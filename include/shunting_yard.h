@@ -27,8 +27,8 @@ bool    associativity_check(char* token);
 bool    precedence_check(char* token);
 void    clear_stack(char** result, int *pos);
 
-int     print_result02(char** result);
-int     print_result01(char** result, int size);
-int     print_stack();
+void     print_result02(char** result);
+void     print_result01(char** result, int size);
+
 
 #endif

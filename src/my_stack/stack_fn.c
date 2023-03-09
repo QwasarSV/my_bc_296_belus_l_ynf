@@ -25,7 +25,7 @@ char* pop()
     return stack[top--];
 }
 
-int print_stack()
+void print_stack()
 {
     printf("printing stack top is %i:", top);
     int index = 0; 

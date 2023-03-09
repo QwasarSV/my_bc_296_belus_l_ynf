@@ -1,6 +1,6 @@
 #include <main_header.h>
 
-int print_result01(char** result, int size)
+void print_result01(char** result, int size)
 {
     printf("printing array :\n");
     int index = 0; 
@@ -12,7 +12,7 @@ int print_result01(char** result, int size)
     printf("|\n");
 }
 
-int print_result02(char** result)
+void print_result02(char** result)
 {
     int index = 0; 
     while (result[index] != NULL)
@@ -52,7 +52,7 @@ char** shunting_yard_algo(char ** tokens)
         {
             push(tokens[index]);
         }
-        else if ( my_strcmp(tokens[index], C_PARENTHESIS) == 0) // step 3
+        else if (my_strcmp(tokens[index], C_PARENTHESIS) == 0) // step 3
         {
             clear_stack(result, &pos);
         }
